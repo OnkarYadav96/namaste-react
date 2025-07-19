@@ -1,35 +1,87 @@
-import RestaurantCard from "./RestaurantCars";
+import RestaurantCard from "./RestaurantCard";
 import { resObj } from "../Data/RestaurantData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Shimmer } from "./Shimmer";
+import { Link } from "react-router-dom";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [listOfRestaurants,setListOfRestaurants]=useState(resObj);
-  // let listOfRestaurants = resObj;
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredRest, setFilterRest] = useState([]);
 
-  function filerTopRatedRest(restList) {
-   setListOfRestaurants( restList.filter((item) => {
-      return item.card.card.info.avgRating > 4;
-    }));
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData =  () => {
+    // Due to CROS error 
+    // const data = await  fetch("https://corsproxy.io/?https://fakerestaurantapi.runasp.net/api/Restaurant/items");
+    // const json =  await data.json();
+    // console.log(json);
+    // setListOfRestaurants("Test json responce",json);
+     setListOfRestaurants(resObj);
+    setFilterRest(resObj);
+  };
+
+  function filerOfferFoodRest(restList) {
+    setFilterRest(
+      restList.filter((item) => {
+        return item.itemPrice < 400;
+      })
+    );
   }
-  return (
+
+  function filterSearchText(filterSearchText) {
+    return setFilterRest(
+      listOfRestaurants.filter((restaurant) => {
+        return restaurant.restaurantName === filterSearchText;
+      })
+    );
+  }
+
+  const onlineStatus=useOnlineStatus();
+  if(!onlineStatus){
+ return <h1>Oops..Looks like you are OffLine..!!! Please check your internet connection.</h1>
+  }
+
+  // Conditional Rendering
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
-      {/* <div className="search">Search</div> */}
-      <div className="filter-btn">
+      <div className="filter">
+        <input
+          type="text"
+          className="search-box"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
         <button
+          className="search-box"
           onClick={() => {
-            filerTopRatedRest(listOfRestaurants);
+            filterSearchText(searchText);
           }}
         >
-          Filter Button
+          Search
         </button>
+        <div className="filter-btn">
+          <button
+            onClick={() => {
+              filerOfferFoodRest(listOfRestaurants);
+            }}
+          >
+            Offer Button for Food under 400 $ items
+          </button>
+        </div>
       </div>
+
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => {
+        {filteredRest.map((restaurant) => {
           return (
-            <RestaurantCard
-              key={restaurant.card.card.info.id}
-              resData={restaurant}
-            />
+            <Link key={restaurant.itemID}  to={"/restaurants/"+restaurant.restaurantID}><RestaurantCard resData={restaurant} /></Link>
           );
         })}
       </div>

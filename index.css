@@ -39,7 +39,8 @@ width:100px;
 }
 
 .res-logo{
-    width:100%;
+    width:200px;
+    height: 188px;
 }
 
 .search{
@@ -49,4 +50,33 @@ width:100px;
 .filter-btn{
     margin: 10px;
     cursor: pointer;
+}
+
+.shimmer-container{
+    display:flex;
+flex-wrap: wrap;
+}
+
+.shimmer-container{
+    margin:20px;
+    width:200px;
+    height:400px;
+    background-color: #f0f0f0;
+}
+
+.login-btn{
+    margin: 10px;
+}
+
+.filter{
+    display:flex
+}
+
+.search-box{
+    margin-top: 10px;
+}
+
+.user-card{
+    padding:10px;
+    border:1px solid black
 }
