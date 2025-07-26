@@ -1285,7 +1285,7 @@ let resObj=[
 "itemPrice": 200,
 "restaurantName": "Masala Library",
 "restaurantID": 15,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/Prawn-Masala.jpg"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/Prawn-Masala.jpg","Promoted":true
 },
 {
 "itemID": 57,
@@ -1339,7 +1339,7 @@ let resObj=[
 "itemPrice": 650,
 "restaurantName": "Masala Library",
 "restaurantID": 15,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/molecular%20biryani.png"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/molecular%20biryani.png","Promoted":true
 },
 {
 "itemID": 86,
@@ -1348,7 +1348,7 @@ let resObj=[
 "itemPrice": 350,
 "restaurantName": "Gopi Dining Hall",
 "restaurantID": 31,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/murgh%20malai%20tikka.jpg"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/murgh%20malai%20tikka.jpg","Promoted":true
 },
 {
 "itemID": 89,
@@ -1357,7 +1357,7 @@ let resObj=[
 "itemPrice": 350,
 "restaurantName": "Bawarchi",
 "restaurantID": 4,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton%20biryani.jpg"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton%20biryani.jpg","Promoted":true
 },
 {
 "itemID": 92,
@@ -1375,7 +1375,7 @@ let resObj=[
 "itemPrice": 380,
 "restaurantName": "Sarvi Restaurant",
 "restaurantID": 8,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton%20biryani.jpg"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton%20biryani.jpg","Promoted":true
 },
 {
 "itemID": 46,
@@ -1393,7 +1393,7 @@ let resObj=[
 "itemPrice": 430,
 "restaurantName": "Alhamdulillah Hotel",
 "restaurantID": 9,
-"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton-korma.jpg"
+"imageUrl": "https://fakerestaurantapi.runasp.net/images/mutton-korma.jpg","Promoted":true
 },
 {
 "itemID": 2,

@@ -8,6 +8,8 @@ import Contact from "./src/components/Contact";
 import { Error } from "./src/components/Error";
 import { RestaurantMenu } from "./src/components/RestaurantMenu";
 import { Shimmer } from "./src/components/Shimmer";
+import appStore from "./src/utils/appStore";
+import { Provider } from "react-redux";
 // import { Grocery } from "./src/components/Grocery";
 
 /***
@@ -66,4 +68,4 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />);
+root.render(<Provider store={appStore}><RouterProvider router={appRouter} /></Provider>);

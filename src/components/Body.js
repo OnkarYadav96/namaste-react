@@ -1,26 +1,30 @@
-import RestaurantCard from "./RestaurantCard";
+import { RestaurantCard, withPromotedLabel } from "./RestaurantCard";
 import { resObj } from "../Data/RestaurantData";
 import { useState, useEffect } from "react";
 import { Shimmer } from "./Shimmer";
 import { Link } from "react-router-dom";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { Counter } from "./Counter";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRest, setFilterRest] = useState([]);
 
+  // Higher Order Component
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData =  () => {
-    // Due to CROS error 
+  const fetchData = () => {
+    // Due to CROS error
     // const data = await  fetch("https://corsproxy.io/?https://fakerestaurantapi.runasp.net/api/Restaurant/items");
     // const json =  await data.json();
     // console.log(json);
     // setListOfRestaurants("Test json responce",json);
-     setListOfRestaurants(resObj);
+    setListOfRestaurants(resObj);
     setFilterRest(resObj);
   };
 
@@ -40,9 +44,14 @@ const Body = () => {
     );
   }
 
-  const onlineStatus=useOnlineStatus();
-  if(!onlineStatus){
- return <h1>Oops..Looks like you are OffLine..!!! Please check your internet connection.</h1>
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h1>
+        Oops..Looks like you are OffLine..!!! Please check your internet
+        connection.
+      </h1>
+    );
   }
 
   // Conditional Rendering
@@ -77,11 +86,23 @@ const Body = () => {
           </button>
         </div>
       </div>
+      <div>
+        <Counter />
+      </div>
 
       <div className="res-container">
         {filteredRest.map((restaurant) => {
           return (
-            <Link key={restaurant.itemID}  to={"/restaurants/"+restaurant.restaurantID}><RestaurantCard resData={restaurant} /></Link>
+            <Link
+              key={restaurant.itemID}
+              to={"/restaurants/" + restaurant.restaurantID}
+            >
+              {restaurant.Promoted ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
+            </Link>
           );
         })}
       </div>

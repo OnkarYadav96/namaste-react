@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Shimmer } from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
+import {RestaurantCard} from "./RestaurantCard";
 import { useParams } from "react-router-dom";
 import { useRestaurantMenu } from "../utils/useRestaurantMenu";
 

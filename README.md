@@ -56,3 +56,20 @@ Virtal DOM === React.createElement("h1",{id:"heading","Hi i am Onakr"}) === Reac
         path: "/grocery",
         element: <Suspense fallback={<Shimmer/>}><GroceryModule /></Suspense>,
       }])
+
+# HigherOrder component
+  input==> RestaurantCard ==> return RestaurantCardPromoted
+   Output ==> return RestaurantCardPromoted   
+
+# Redux-Toolkit
+ - Slice is logical sepration of redux store
+ - WorkFlow
+ <BUTTON> ==> dispatch(action) ==> reducer(function) ==> modify Redux slice ==> To date Updated Store state use (Selector) 
+
+ 1. Install @redux/toolkit and react-redux
+ 2. Build our store
+ 3. Connect our store to our app
+    Slice (createSlice)
+ 4. dispatch(action)
+ 5. ruducer() fuction
+ 6. useSelector
